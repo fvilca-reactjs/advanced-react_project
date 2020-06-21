@@ -14,16 +14,22 @@ function HooksContainer1() {
       ()=>setUseEffectValue("El componente se ha montado"),3000
     )
     
-  }, [])
+  }, [stateValue])
 
   const testHook = (useEffectValue)? useEffectValue: 'espera 3 segundos'
   
+ const changeUseEffectValue=()=>{
+  setUseEffectValue("some string")
+ }
+
+
   return (
     <div>
       local State : {stateValue}
       <button onClick={() => incrementValue(1)}>Increment</button>
       <button onClick={() => incrementValue(-1)}>Decrement</button>
-
+      <button onClick={() => changeUseEffectValue()}>change</button>
+      
       <p>{testHook} </p>
     </div>
   )
