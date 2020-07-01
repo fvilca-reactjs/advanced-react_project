@@ -1,10 +1,18 @@
-import React from 'react'
+import React,{useContext} from 'react'
+import Context from '../utils/context';
 
 //Home page
-const Home = (props) => (
+const Home = (props) => {
+
+  const context = useContext(Context)
+
+  return(
     <div>
-      Home
+      Home:
+      <br/>
+      globalValue:{context.globalValue}
     </div>
-);
+  )
+};
 
 export default Home;

@@ -1,16 +1,35 @@
-import React  from 'react';
+
 import Routes from './routes';
+import React,{useState} from 'react'
+import Context from './utils/context';
 
 
 //main app 
-function App (){
+function App() {
 
-    return(
-      <div>
-        Mi proyecto
+  const [value, setValue] = useState(8);
+  const incrementValue = () => {
+    setValue(value+1)
+  }
+  const decrementValue = () => {
+    setValue(value-1)
+  }
+  
+  
+  return (
+    <div>
+      Mi proyecto
+      <Context.Provider value={
+        {
+          globalValue:value,
+          incrementGlobalValue:()=>incrementValue(),
+          decrementGlobalValue:()=>decrementValue()
+        }
+      }>
         <Routes />
-      </div>
-    )
+      </Context.Provider>
+    </div>
+  )
 }
 
 
