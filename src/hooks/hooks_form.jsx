@@ -1,5 +1,6 @@
-import React, { useState, useReducer } from 'react'
+import React, { useState, useReducer, useContext } from 'react'
 import * as Reducer from '../store/hooks_state/form_reducer'
+import Context from '../utils/context'
 
 function HooksForm() {
 
@@ -22,8 +23,8 @@ function HooksForm() {
         evt.preventDefault()
         dispatch({ type: 'INPUT_SUBMIT', input: evt.target.input_change.value })
     }
-
-    console.log('reducer:',state)
+    /***************************************************/
+    const context = useContext(Context)
 
     return (
         <div>
@@ -37,6 +38,11 @@ function HooksForm() {
                 <button>useReducer</button>
             </form>
 
+            <form onSubmit={context.contextHandleSubmit}>
+                <input type="text"  id='input_change' value={context.contextInputChange} onChange={context.contextHandleChange} />
+                <button>useReducer</button>
+            </form>
+
             <section>
                 <h1>Use State:</h1>
                 <p>change: {valueState}</p>
@@ -45,6 +51,10 @@ function HooksForm() {
                 <h1>Use Reducer:</h1>
                 <p>change: {state.input_change}</p>
                 <p>submit: {state.input_submit}</p>
+                
+                <h1>Use Reducer + useContext:</h1>
+                <p>change: {context.contextInputChange}</p>
+                <p>submit: {context.contextInputSubmit}</p>
             </section>
         </div>
     )
