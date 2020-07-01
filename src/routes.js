@@ -22,8 +22,9 @@ import AuthCheck from './utils/authcheck';
 import history from './utils/history';
 
 import { Router, Route, Switch, Redirect } from 'react-router';
-import HooksContainer1 from './hooks/hooks_container1';
 
+import HooksContainer1 from './hooks/hooks_container1';
+import HooksForm from './hooks/hooks_form'
 
 
 
@@ -75,7 +76,9 @@ class Routes extends Component {
 
             <Route path='/callback' render={(props) => { handleAuthentication(props); return <Callback />}} />
             <Route path="/component1" render={(props) => <Component1 {...props} /> } />
+            
             <Route path='/hookscontainer' component={HooksContainer1} />
+            <Route path='/hooksform' component={HooksForm} />
             <Route path="/listitem/:id" component={RenderListItem} />
             
               

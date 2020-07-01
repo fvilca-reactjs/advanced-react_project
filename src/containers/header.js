@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-
+import '../styles/style.scss'
 
 class Header extends Component {
 
@@ -23,8 +23,9 @@ class Header extends Component {
           <Link to='/form1' style={{padding: '5px'}}>
             Form 1
           </Link>
-          <Link to='/hookscontainer'> Hooks Container
+          <Link to='/hookscontainer' className='my-link'> Hooks Container
           </Link>
+          <Link to='/hooksform' className='my-link'> Hooks Form          </Link>
 
           <Link to='/renderlist' style={{padding: '5px'}}>
              List

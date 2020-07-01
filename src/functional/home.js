@@ -4,6 +4,7 @@ import Context from '../utils/context';
 //Home page
 const Home = (props) => {
 
+  console.log("Home: props",props)
   const context = useContext(Context)
 
   return(
