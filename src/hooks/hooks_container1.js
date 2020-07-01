@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useReducer } from 'react';
 import * as Reducer_ from '../store/hooks_state/hooks_reducer'
-import * as Actions from '../store/actions/actions'
+import * as ACTIONS from '../store/actions/actions'
 
 function HooksContainer1() {
 
@@ -8,7 +8,9 @@ function HooksContainer1() {
   //+++++++++++++ state
   const [stateValue, setValue] = useState(0)
   const [useEffectValue, setUseEffectValue] = useState(null)
+  
   const [state, dispatch] = useReducer(Reducer_.HooksReducer, Reducer_.initialState)
+  
   const testHook = (useEffectValue) ? useEffectValue : 'espera 3 segundos'
 
   //+++++++++++++ methods
@@ -20,15 +22,19 @@ function HooksContainer1() {
     )
 
   }, [stateValue])
+  
   const changeUseEffectValue = () => {
     setUseEffectValue("some string")
   }
   
   const handleDispatchTrue = () => {
-    dispatch(Actions.success())
+    //dispatch(ACTIONS.success())
+    dispatch({
+      type: "SUCCESS"
+    })
   }
   const handleDispatchFalse = () => {
-    dispatch(Actions.failure())
+    dispatch(ACTIONS.failure())
   }
 
   return (
@@ -39,7 +45,7 @@ function HooksContainer1() {
       <button onClick={() => changeUseEffectValue()}>change</button>
       <button onClick={() => handleDispatchTrue()}>change By Reducer True</button>
       <button onClick={() => handleDispatchFalse()}>change By Reducer False</button>
-      {state.steteprop1
+      {state.stateprop1 //error: puse stete y no me dio error
         ? <p>the state prop is true</p>
         : <p>the state prop is false</p>
       }
